@@ -43,3 +43,38 @@ class Solution {
     }
 }
 ```
+
+## 최빈값 구하기
+```Java
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int solution(int[] array) {
+        // max는 지금까지 발견된 가장 많은 공통된 숫자를 카운트, answer는 지금까지 발견된 최빈값을 뜻
+        int max = 0;
+        int answer = 0;
+        // 카운트 하기에 좋은 건 Map 인터페이스를 사용해보자. value값과 key값을 활용해 카운트하기에 적절하다
+        Map<Integer, Integer> map = new HashMap<>();
+        // 배열에서 하나씩 꺼내서 arrays에 담는다
+        for(int arrays : array) {
+            // 현재 숫자에서 arrays에 있는 값을 가져오고 +1을 해서 count에 저장
+            // 이때 처음나왔다면 0을 가져와서 +1이 된다
+            int count = map.getOrDefault(arrays, 0) + 1;
+            // 이때 지금까지 나온 숫자 중에 가장 많이 나왔다면 가장 많은 최빈값인 max에 넣고, answer에는 해당 숫자를 넣어준다.
+            if(count > max) {
+                max = count;
+                answer = arrays;
+            // 만약 max와 count한 숫자가 동일하다면 answer는 -1로 설정
+            } else if(count == max) {
+                answer = -1;
+            }
+            // 지금 숫자 arrays의 새로운 개수를 map에 저장
+            // array에 들어가 있는 수를 전부 꺼낼때 까지 반복
+            map.put(arrays, count);
+        }
+        // 최종값을 반환, 여러개 일경우 -1을 반
+        return answer;
+    }
+}
+```
