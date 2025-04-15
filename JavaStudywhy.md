@@ -78,3 +78,31 @@ class Solution {
     }
 }
 ```
+## 피자 나눠먹기1
+```Java
+class Solution {
+    public int solution(int n) {
+        // Math.ceil을 그냥 쓰면 정수가 나온다. 예를 들어 0.1의 계산을 하면 0.0으로 계산이 된다. 때문에 아래와 같이 double로 형변환을 해야 소수점이 발생하여 정상적으로 ceil을 할 수 있다.
+        int pizza = (int)Math.ceil((double) n / 7);
+        return pizza;
+    }
+}
+```
+## 피자 나눠먹기2
+```java
+// 최소공배수를 찾아서 풀면 된다
+// 유클리드 호제법을 이용해서 풀면 된다고 하지만 잘 모르는 관계로...
+class Solution {
+    public int solution(int n) {
+        int pizza = 0;
+        // 1부터 입력된 n과 6의 최대공약수를 검사하면서 최소공약수를 찾아냄
+        for(int i = 1; i <= n * 6; i++) {
+            if(i * 6 % n == 0) {
+                pizza = i;
+                break;
+            }
+        }
+        return pizza;
+    }
+}
+```
