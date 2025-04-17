@@ -106,3 +106,22 @@ class Solution {
     }
 }
 ```
+## 수열과 구간3
+```java
+class Solution {
+    public int[] solution(int[] arr, int[][] queries) {
+        // arr[i]의 값을 저장하기 위해 x라는 변수를 만든다
+        int x = 0;
+        for(int i = 0; i < queries.length; i++) {
+            // arr[queries[i][0]]은
+            // arr[쿼리 값(예를 들어 [1, 4][2, 3]라 했을 때 i의 배열에 0번 인덱스, 반복문 맨 처음에 올 i는 0이므로 0번 배열의 0번 인덱스, 맨 처음 값인 1을 넣는 것)]
+            x = arr[queries[i][0]];
+            // arr의 배열에 있는 것을 넣는다
+            arr[queries[i][0]] = arr[queries[i][1]];
+            // x의 값에 넣어둔 것을 다시 집어넣어 바꾼다
+            arr[queries[i][1]] = x;
+        }
+        return arr;
+    }
+}
+```
