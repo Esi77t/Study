@@ -125,3 +125,18 @@ class Solution {
     }
 }
 ```
+## 특정 문자 제거
+```java
+class Solution {
+    public String solution(String my_string, String letter) {
+        String answer = "";
+        // replace는 (해당문자를, 이것으로 대체) 한다는 메서드이다
+        answer = my_string.replace(letter, "");
+        
+        return answer;
+    }
+}
+
+// 하지만 원본 문자열을 변경하지않고 대체된 새로운 문자열을 반환한다
+// 따라서 원본 문자열도 바꾸고 싶다면 StringBuffer나 StringBuilder를 사용할 것
+```
