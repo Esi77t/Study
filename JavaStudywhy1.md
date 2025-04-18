@@ -140,3 +140,19 @@ class Solution {
 // 하지만 원본 문자열을 변경하지않고 대체된 새로운 문자열을 반환한다
 // 따라서 원본 문자열도 바꾸고 싶다면 StringBuffer나 StringBuilder를 사용할 것
 ```
+## 배열 제거
+```java
+
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        int[] answer = new int[numbers.length];
+        // Arrays.copyOfRange(복사할 배열, 인덱스 시작점, 인덱스 끝나는 지점)
+        // 시작점은 이상, 끝나는 지점은 미만이므로 num2의 인덱스 값까지 불러올려면 +1 처리를 해줘야 한다
+        answer = Arrays.copyOfRange(numbers, num1, num2 + 1);
+        return answer;
+    }
+}
+
+```
