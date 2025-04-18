@@ -156,3 +156,23 @@ class Solution {
 }
 
 ```
+## 외계행성의 나이 구하기
+```java
+
+class Solution {
+    public String solution(int age) {
+        String answer = "";
+        // 외계행성의 나이인 0부터 9까지를 뜻하는 a부터 j까지 pro692에 담는다
+        String pro692 = "abcdefghij";
+        // strArr은 문자열의 각 자리수를 split을 이용하여 분리시켜 strArr배열에 담는다
+        String[] strArr = pro692.valueOf(age).split("");
+
+        // 반복문을 이용하여 각 자리수에 맞는 알파벳을 찾아서 answer에 담는다
+        for(int i = 0; i < strArr.length; i++) {
+            answer += pro692.charAt(Integer.valueOf(strArr[i]));
+        }
+        return answer;
+    }
+}
+
+```
