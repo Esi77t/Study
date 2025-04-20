@@ -36,3 +36,29 @@ class Solution {
     }
 }
 ```
+## 모스부호 1
+```Java
+class Solution {
+    public String solution(String letter) {
+        String answer = "";
+        // 프로그래머스에서 받은 모스부호를 배열에 저장
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        // 'a'값을 아스키 코드로 받아냄 대문자가 아닌 이유는 문제가 소문자로 반환해야하기 때문
+        int ascii = 97;
+        // letter는 공백 값을 가지고 있으므로 split을 써서 공백을 기준으로 나눈다
+        String[] letterSplit = letter.split(" ");
+        // 받아낸 값을 향상된 반복문을 활용함
+        for(String ls : letterSplit) {
+            // 반복문을 돌리면서 morse의 인덱스와 받아낸 모스부호가 같은지 찾아서
+            // ascii 코드에 +i 를 한다
+            for(int i = 0; i < morse.length; i++) {
+                if(morse[i].equals(ls)) {
+                    answer += (char)(ascii + i);
+                }
+            }
+        }
+        return answer;
+    }
+}
+```
+
