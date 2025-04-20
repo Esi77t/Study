@@ -61,4 +61,20 @@ class Solution {
     }
 }
 ```
-
+## 구슬을 나누는 경우의 수
+```Java
+class Solution {
+    public int solution(int balls, int share) {
+        // int가 아닌 long을 지정해준 이유는 프로그래머스가 제공해준 힌트로 풀 게 될 경우 오버플로우가 발생할 수 있으므로
+        // long으로 지정 함
+        long answer = 1;
+        // 여기서 n은 balls, m은 share를 뜻한다
+        for(int i = 0; i < share; i++) {
+            answer *= (balls - i);    // 분자 : n부터 n-m+1까지 나눔
+            answer /= (i + 1);        // 분모 : 1부터 m까지 나눔
+        }
+        // 다시 int로 지정해 반환
+        return (int)answer;
+    }
+}
+```
