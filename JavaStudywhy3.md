@@ -1,6 +1,6 @@
 코딩테스트</br>
 문제 참고해서 푼거 다시 정리하기</br>
-##합성수 찾기
+## 합성수 찾기
 ```Java
 class Solution {
     public int solution(int n) {
@@ -20,7 +20,7 @@ class Solution {
     }
 }
 ```
-##최대값 찾기(1)
+## 최대값 찾기(1)
 ```Java
 import java.util.*;
 
@@ -35,7 +35,7 @@ class Solution {
     }
 }
 ```
-##팩토리얼
+## 팩토리얼
 ```Java
 class Solution {
     public int solution(int n) {
@@ -57,6 +57,75 @@ class Solution {
         }
         // 그리고 1이 더 많으므로 -1을 해준다
         return answer - 1;
+    }
+}
+```
+## 모음제거
+```Java
+// replaceAll(해당글자를, 이것으로 대체한다);
+// 이걸로 쓰면 된다
+class Solution {
+    public String solution(String my_string) {
+        String answer = my_string;
+        String[] aeiou = {"a", "e", "i", "o", "u"};
+        for(String a : aeiou) {
+            answer = answer.replaceAll(a, "");
+        }
+        
+        return answer;
+    }
+}
+```
+## 문자열 정렬하기(1)
+```Java
+import java.util.*;
+
+class Solution {
+    public int[] solution(String my_string) {
+        int[] answer = {};
+        // 문자열을 제거한 것, []는 정규표현식
+        String[] arr = my_string.replaceAll("[a-z]", "").split("");
+        
+        answer = new int[arr.length];    // 제거한 문자열 길이 생성
+        
+        for(int i = 0; i < arr.length; i++) {
+            // 하나씩 꺼내서 정수로 변환
+            answer[i] = Integer.parseInt(arr[i]);
+        }
+        // 정렬
+        Arrays.sort(answer);
+        
+        return answer;
+    }
+}
+```
+## 소인수분해
+```Java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int n) {
+        List<Integer> list = new ArrayList<>();
+        // 자연수 n의 소인수를 구하기 위한 반복문
+        for(int i = 2; i <= n; i++) {
+            // 나누어 떨어지면 소인수
+            // 몫이 2 이상인 경우도 있기 때문에 안나눠질 때 까지 나눔
+            if(n % i == 0) {
+                while(n % i == 0) {
+                    n /= i;
+                }
+                // 구한 소인수는 list에 넣는다
+                list.add(i);
+            }
+        }
+        // 소인수 갯수와 같은 사이즈로
+        int[] answer = new int[list.size()];
+        // 구한 것을 반복문을 돌려 배열에 넣는다
+        for(int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+        
+        return answer;
     }
 }
 ```
